@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+indent() {
+    sed -u 's/^/      /'
+}
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+GEMFILE=$(cat ${ENV_DIR}/GEMFILE)
+
+if [[ -z "${GEMFILE}" ]]; then
+    echo "GEMFILE was not set. Aborting" | indent
+    exit 1
+fi
+
+cp ${BUILD_DIR}/${GEMFILE} ${BUILD_DIR}/Gemfile
+
+if ! [ $? ]; then
+    echo "FAILED to copy a Gemfile" | indent
+    exit 1
+fi
+
+echo "Copied ${GEMFILE} as Gemfile successfully" | indent
