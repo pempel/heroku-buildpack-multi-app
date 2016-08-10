@@ -22,4 +22,11 @@ if ! [ $? ]; then
     exit 1
 fi
 
+cp ${BUILD_DIR}/${GEMFILE} ${BUILD_DIR}/Gemfile.lock
+
+if ! [ $? ]; then
+    echo "FAILED to copy a Gemfile.lock" | indent
+    exit 1
+fi
+
 echo "Copied ${GEMFILE} as Gemfile successfully" | indent
