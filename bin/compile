@@ -23,6 +23,6 @@ mv ${APP_DIR}/* .
 rm -rf ${APP_DIR}
 
 mkdir -p "${BUILD_DIR}/.profile.d/${SCRIPT_NAME}"
-cp "${SCRIPT_DIR}/export" "${BUILD_DIR}/.profile.d/${SCRIPT_NAME}/export"
+cp "${SCRIPT_DIR}/bin/export" "${BUILD_DIR}/.profile.d/${SCRIPT_NAME}/export"
 
 echo "Copied the app from the ${APP_DIR} folder successfully" | indent
