@@ -7,27 +7,15 @@ indent() {
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+APP_DIR=$(cat ${ENV_DIR}/APP_DIR)
 
-GEMFILE=$(cat ${ENV_DIR}/GEMFILE)
-
-if [[ -z "${GEMFILE}" ]]; then
-    echo "GEMFILE was not set. Aborting" | indent
+if [ ! -d "${APP_DIR}" ]; then
+    echo "APP_DIR does not exist. Aborting" | indent
     exit 1
 fi
 
-cp ${BUILD_DIR}/${GEMFILE} ${BUILD_DIR}/Gemfile
+find . -maxdepth 1 -type d -not -name ${APP_DIR} -not -name "." -exec rm -rf {} +
+mv ${APP_DIR}/* .
+rm -rf ${APP_DIR}
 
-if ! [ $? ]; then
-    echo "FAILED to copy a Gemfile" | indent
-    exit 1
-fi
-
-cp ${BUILD_DIR}/${GEMFILE}.lock ${BUILD_DIR}/Gemfile.lock
-
-if ! [ $? ]; then
-    echo "FAILED to copy a Gemfile.lock" | indent
-    exit 1
-fi
-
-echo "Copied ${GEMFILE} as Gemfile successfully" | indent
-echo "Copied ${GEMFILE}.lock as Gemfile.lock successfully" | indent
+echo "Copied ${APP_DIR} successfully" | indent

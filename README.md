@@ -1,1 +1,1 @@
-# Heroku Multi Gemfile buildpack
+# Heroku Multi App buildpack
