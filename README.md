@@ -1,1 +1,1 @@
-# Heroku Buildpack: Multiple Ruby Apps
+# Heroku Buildpack: Multi Ruby
