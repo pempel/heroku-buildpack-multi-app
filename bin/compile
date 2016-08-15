@@ -20,4 +20,6 @@ find . -maxdepth 1 -type d ! -name ${APP_DIR} ! -name "." -exec rm -rf {} +
 mv ${APP_DIR}/* .
 rm -rf ${APP_DIR}
 
+export BUNDLE_GEMFILE=$BUILD_DIR/Gemfile
+
 echo "Copied the app from the ${APP_DIR} folder successfully" | indent
