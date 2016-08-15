@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Multi-App"
+echo "Multi Ruby"
 exit 0

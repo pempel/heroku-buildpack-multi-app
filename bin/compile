@@ -4,7 +4,7 @@ indent() {
     sed -u 's/^/       /'
 }
 
-SCRIPT_NAME="heroku-buildpack-multiple-ruby-apps"
+SCRIPT_NAME="heroku-buildpack-multi-ruby"
 SCRIPT_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -23,6 +23,6 @@ mv ${APP_DIR}/* .
 rm -rf ${APP_DIR}
 
 mkdir -p "${BUILD_DIR}/.profile.d/${SCRIPT_NAME}"
-cp "${SCRIPT_DIR}/bin/export" "${BUILD_DIR}/.profile.d/${SCRIPT_NAME}/export"
+cp "${SCRIPT_DIR}/bin/exports.sh" "${BUILD_DIR}/.profile.d/${SCRIPT_NAME}.sh"
 
 echo "Copied the app from the ${APP_DIR} folder successfully" | indent
