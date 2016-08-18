@@ -18,7 +18,12 @@ if [ ! -d "${APP_DIR}" ]; then
     exit 1
 fi
 
-find . -maxdepth 1 -type d ! -name ${APP_DIR} ! -name "." -exec rm -rf {} +
+find . -maxdepth 1 -type d \
+  ! -name ${APP_DIR} \
+  ! -name core \
+  ! -name "." \
+  -exec rm -rf {} +
+
 mv ${APP_DIR}/* .
 rm -rf ${APP_DIR}
 
